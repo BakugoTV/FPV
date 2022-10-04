@@ -6,7 +6,7 @@ public class PlayerLook : MonoBehaviour
 {
     public Vector2 _mousSensitivity;
     private Vector2 _padSensitivity;
-    public Vector2 _mousYLimit;
+    public Vector2 _mouseYLimit;
     private float horizontal;
     private float vertical;
     public bool cameraActive;
@@ -27,14 +27,13 @@ public class PlayerLook : MonoBehaviour
             
             Vector3 cameraAngles = Camera.main.transform.eulerAngles;
             vertical = vertical + mouseY;
-            vertical = Mathf.Clamp(vertical, _mousYLimit.x, _mousYLimit.y);
-            
+            vertical = Mathf.Clamp(vertical, _mouseYLimit.x, _mouseYLimit.y);
             Camera.main.transform.eulerAngles = new Vector3(vertical, cameraAngles.y, cameraAngles.z);
 
             float mouseX = Input.GetAxis("Mouse X") * _mousSensitivity.x * Time.deltaTime;
             horizontal = horizontal + mouseX;
-            Debug.Log(mouseX);
-            //horizontal = Mathf.Clamp(vertical, _mousYLimit.x, _mousYLimit.y);
+            //Debug.Log(mouseX);
+            //horizontal = Mathf.Clamp(vertical, _mouseYLimit.x, _mouseYLimit.y);
             Vector3 PlayerAngles = transform.eulerAngles;
             transform.eulerAngles = new Vector3(PlayerAngles.x, horizontal, PlayerAngles.z);
         }
